@@ -1,0 +1,82 @@
+Create Table CardTypes 
+(
+	Id int Identity(1,1) primary key,
+	Type nvarchar(50) NOT NULL
+)
+go
+
+insert into CardTypes (Type)
+values
+('City'),
+('Resource'),
+('Scene'),
+('Armor'),
+('Infantry')
+go
+
+Create Table CardAbilityTypes 
+(
+	Id int Identity(1,1) primary key,
+	Type nvarchar(50) NOT NULL
+)
+go
+
+insert into CardAbilityTypes (Type)
+values
+('DealDamageToOpponentCity'),
+('DealDamageToOpponentUnit'),
+('AddingResources'),
+('HealOwnCity')
+go
+
+Create Table CardRarities
+(
+	Id int Identity(1,1) primary key,
+	Rarity nvarchar(50) NOT NULL
+)
+go
+
+insert into CardRarities (Rarity)
+values
+('Common'),
+('Uncommon'),
+('Rare'),
+('Unique'),
+('Legendary')
+go
+
+Create Table Cards
+(
+	Id int Identity(1,1) primary key,
+	Name nvarchar(50) NOT NULL,
+	CardTypeId int foreign key references CardTypes(Id),
+	ResourceRequirement int NULL,
+	CardText nvarchar(200) NULL,
+	Image image NULL,
+	AttackValue int NULL,
+	StrengthValue int NULL,
+	CardRarityId int foreign key references CardRarities(Id)
+)
+go
+
+Create Table CardsAbilitiesValues
+(
+	Id int Identity(1,1) primary key,
+	CardId int foreign key references Cards(Id) NOT NULL,
+	CardAbilityTypeId int foreign key references CardAbilityTypes(Id) NULL,
+	AbilityValue int NULL
+)
+go
+
+insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
+values
+(1, 1, NULL, 4, 'BA-10', 1, 1)
+go
+
+
+
+
+update Cards
+set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\C#\CardBrowser\DG images\BA10.jpg', Single_Blob) as img) 
+where Id = 1
+go

@@ -1,0 +1,10 @@
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\bin\Debug\CardBrowser.Database.dll.config
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\bin\Debug\CardBrowser.Database.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\bin\Debug\CardBrowser.Database.pdb
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\bin\Debug\EntityFramework.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\bin\Debug\EntityFramework.xml
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\obj\Debug\CardBrowser.Database.csprojResolveAssemblyReference.cache
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\obj\Debug\CardBrowser.Database.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.Database\obj\Debug\CardBrowser.Database.pdb

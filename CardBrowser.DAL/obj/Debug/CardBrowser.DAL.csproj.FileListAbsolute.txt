@@ -1,0 +1,12 @@
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.DAL.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.DAL.pdb
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.csprojResolveAssemblyReference.cache
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.pdb
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.DAL.dll.config
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.Database.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.Database.pdb
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.xml
+C:\C#\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.SqlServer.xml
