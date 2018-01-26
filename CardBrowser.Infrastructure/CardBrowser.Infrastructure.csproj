@@ -120,6 +120,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Exceptions\BaseCustomException.cs" />
+    <Compile Include="Exceptions\InvalidPictureFormatException.cs" />
     <Compile Include="Interfaces\ICardService.cs" />
     <Compile Include="Services\CardService.cs" />
     <Compile Include="Services\AutoMapperConfiguration.cs" />

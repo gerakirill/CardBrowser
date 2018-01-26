@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using CardBrowser.BLL.Models;
-using CardBrowser.Database;
-using CardBrowser.DAL.Repository;
-using CardBrowser.Infrastructure.Interfaces;
-using CardTypes = CardBrowser.BLL.Enums.CardTypes;
-
-namespace CardBrowser.Infrastructure.Services
+﻿namespace CardBrowser.Infrastructure.Services
 {
+
+    #region usings
+    using System;
+    using System.Collections.Generic;
+    using AutoMapper;
+    using BLL.Models;
+    using Database;
+    using DAL.Repository;
+    using Interfaces;
+    using CardTypes = BLL.Enums.CardTypes;
+    using ViewModels;
+    using Exceptions;
+    #endregion
+
+    /// <summary>
+    /// Service to work with Card entities
+    /// </summary>
     public class CardService : ICardService
     {
-        
+
         private readonly CardsAbilitiesValuesRepo _cardsAbilitiesValuesRepo;
         private readonly CardRaritiesRepo _cardRaritiesRepo;
         private readonly CardAbilityTypesRepo _cardAbilityTypesRepo;
@@ -31,33 +35,89 @@ namespace CardBrowser.Infrastructure.Services
             _cardsRepo = new CardsRepo(context);
         }
 
-        #region Card types
-
-
-
-        #endregion
-
         #region Cards
 
-        public CardBase GetCardById(int id)
+        /// <summary>
+        /// Gets card view model by id
+        /// </summary>
+        /// <param name="id">Card id</param>
+        /// <returns></returns>
+        public CardViewModel GetCardViewModel(int id)
         {
-            return MapToCardBase(_cardsRepo
-                .FindBy(c => c.Id == id));
+            var card = _cardsRepo
+                .FindBy(c => c.Id == id);
+            return Mapper.Map<Cards, CardViewModel>(card);
         }
 
-        
-        public IEnumerable<CardBase> GetAllCards()
+        /// <summary>
+        /// Gets all CardViewModels
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<CardViewModel> GetAllCardsViewModels()
         {
             var cards = _cardsRepo
                 .GetAllQueryable();
-            var list = new List<CardBase>();
-            foreach (var card in cards)
-            {
-                list.Add(MapToCardBase(card));
-            }
-            return list;
+            return Mapper.Map<IEnumerable<Cards>, IEnumerable<CardViewModel>>(cards);
         }
 
+        /// <summary>
+        /// Creates new card
+        /// </summary>
+        /// <param name="card">Card view model</param>
+        public void CreateCard(CardViewModel card)
+        {
+            if (!string.IsNullOrEmpty(card.Name) && !string.IsNullOrEmpty(card.Image))
+            {
+                try
+                {
+                    var newCard = Mapper.Map<CardViewModel, Cards>(card);
+                    if (newCard != null)
+                    {
+                        newCard.Image = Convert.FromBase64String(card.Image);
+                        _cardsRepo.Create(newCard);
+                    }
+                }
+                catch (FormatException)
+                {
+                    throw new InvalidPictureFormatException("Picture has a bad format");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates card
+        /// </summary>
+        /// <param name="card">Card view model</param>
+        public void UpdateCard(CardViewModel card)
+        {
+            var cardEntity = _cardsRepo
+                .FindBy(c => c.Id == card.Id);
+            if (cardEntity != null)
+            {
+                cardEntity = Mapper.Map<CardViewModel, Cards>(card);
+                _cardsRepo.Update(cardEntity);
+            }
+        }
+
+        /// <summary>
+        /// Deletes card
+        /// </summary>
+        /// <param name="cardId">Card id</param>
+        public void DeleteCard(int cardId)
+        {
+            var cardEntity = _cardsRepo
+               .FindBy(c => c.Id == cardId);
+            if (cardEntity != null)
+            {
+                _cardsRepo.Remove(cardEntity);
+            }
+        }
+
+        /// <summary>
+        /// Maps card entity to its type
+        /// </summary>
+        /// <param name="card">Card entity</param>
+        /// <returns></returns>
         private CardBase MapToCardBase(Cards card)
         {
             switch ((CardTypes)card.CardTypeId)
@@ -76,22 +136,6 @@ namespace CardBrowser.Infrastructure.Services
                     return null;
             }
         }
-
-        public void CreateCard(CardBase card)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateCard(CardBase card)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteCard(CardBase card)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
     }

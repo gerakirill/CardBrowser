@@ -289,13 +289,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CardBrowser.BLL\CardBrowser.BLL.csproj">
-      <Project>{1f9576ab-37d9-42ca-8a1e-c2455957534b}</Project>
-      <Name>CardBrowser.BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CardBrowser.Infrastructure\CardBrowser.Infrastructure.csproj">
       <Project>{BA5ADAEC-8316-4E31-8D54-1A0FFA92B46B}</Project>
       <Name>CardBrowser.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CardBrowser.ViewModels\CardBrowser.ViewModels.csproj">
+      <Project>{bfbbc73f-70f2-4057-95d6-2f280416007c}</Project>
+      <Name>CardBrowser.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
