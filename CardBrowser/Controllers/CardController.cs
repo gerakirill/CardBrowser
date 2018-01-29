@@ -5,6 +5,7 @@
     using System.Web.Http;
     using Models;
     using ViewModels;
+    using CardBrowser.Services;
     #endregion
 
     [RoutePrefix("api/card")]
@@ -23,7 +24,7 @@
         }
 
         /// <summary>
-        /// Gets card by id
+        /// Gets card by idss
         /// </summary>
         /// <param name="id">Id of card to get</param>
         /// <returns></returns>
@@ -34,7 +35,7 @@
         {
             return Ok(UnitOfWork.CardService.GetCardViewModel(id));
         }
-
+        
         /// <summary>
         /// Deletes cards
         /// </summary>

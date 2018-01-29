@@ -297,6 +297,10 @@
       <Project>{bfbbc73f-70f2-4057-95d6-2f280416007c}</Project>
       <Name>CardBrowser.ViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\CardBrowser.Services.csproj">
+      <Project>{c38ab14a-c677-48ad-9593-0f5250e30eb6}</Project>
+      <Name>CardBrowser.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

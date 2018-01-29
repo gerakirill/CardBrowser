@@ -1,12 +1,14 @@
-﻿using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-using CardBrowser.Infrastructure;
-using CardBrowser.Infrastructure.Services;
-
-namespace CardBrowser
+﻿namespace CardBrowser
 {
+
+    #region usings
+    using System.Web.Http;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+    using CardBrowser.Services;
+    #endregion
+
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()

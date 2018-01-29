@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using CardBrowser.Infrastructure;
-
-namespace CardBrowser.Controllers
+﻿namespace CardBrowser.Controllers
 {
+
+    #region usings
+    using System.Web.Http;
+    using Infrastructure;
+    using Services;
+    #endregion
+
     public class BaseApiController : ApiController
     {
         private UnitOfWork _unitOfWork;
