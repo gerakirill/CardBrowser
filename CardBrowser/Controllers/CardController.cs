@@ -24,7 +24,7 @@
         }
 
         /// <summary>
-        /// Gets card by idss
+        /// Gets card by ids
         /// </summary>
         /// <param name="id">Id of card to get</param>
         /// <returns></returns>

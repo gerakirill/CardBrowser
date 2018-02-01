@@ -7,3 +7,4 @@ C:\projects\CardBrowser\CardBrowser\CardBrowser.BLL\bin\Debug\CardBrowser.BLL.dl
 C:\projects\CardBrowser\CardBrowser\CardBrowser.BLL\bin\Debug\CardBrowser.BLL.pdb
 C:\projects\CardBrowser\CardBrowser\CardBrowser.BLL\obj\Debug\CardBrowser.BLL.dll
 C:\projects\CardBrowser\CardBrowser\CardBrowser.BLL\obj\Debug\CardBrowser.BLL.pdb
+C:\projects\CardBrowser\CardBrowser\CardBrowser.BLL\obj\Debug\CardBrowser.BLL.csprojResolveAssemblyReference.cache
