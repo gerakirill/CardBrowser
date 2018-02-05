@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DeckGeneralsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DeckGeneralsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CardAbilityTypes">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,13 +25,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CardTypeId" Type="int" />
+          <Property Name="CardTypeId" Type="int" Nullable="false" />
           <Property Name="ResourceRequirement" Type="int" />
           <Property Name="CardText" Type="nvarchar" MaxLength="200" />
           <Property Name="Image" Type="image" />
           <Property Name="AttackValue" Type="int" />
           <Property Name="StrengthValue" Type="int" />
-          <Property Name="CardRarityId" Type="int" />
+          <Property Name="CardRarityId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CardsAbilitiesValues">
           <Key>
@@ -39,7 +39,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CardId" Type="int" Nullable="false" />
-          <Property Name="CardAbilityTypeId" Type="int" />
+          <Property Name="CardAbilityTypeId" Type="int" Nullable="false" />
           <Property Name="AbilityValue" Type="int" />
         </EntityType>
         <EntityType Name="CardTypes">
@@ -49,8 +49,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Cards__CardRarit__1CF15040">
-          <End Role="CardRarities" Type="Self.CardRarities" Multiplicity="0..1" />
+        <Association Name="FK_Cards_CardRarities">
+          <End Role="CardRarities" Type="Self.CardRarities" Multiplicity="1" />
           <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CardRarities">
@@ -61,8 +61,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cards__CardTypeI__1BFD2C07">
-          <End Role="CardTypes" Type="Self.CardTypes" Multiplicity="0..1" />
+        <Association Name="FK_Cards_CardTypes">
+          <End Role="CardTypes" Type="Self.CardTypes" Multiplicity="1" />
           <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CardTypes">
@@ -73,8 +73,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CardsAbil__CardA__20C1E124">
-          <End Role="CardAbilityTypes" Type="Self.CardAbilityTypes" Multiplicity="0..1" />
+        <Association Name="FK_CardsAbilitiesValues_CardAbilityTypes">
+          <End Role="CardAbilityTypes" Type="Self.CardAbilityTypes" Multiplicity="1" />
           <End Role="CardsAbilitiesValues" Type="Self.CardsAbilitiesValues" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CardAbilityTypes">
@@ -85,7 +85,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CardsAbil__CardI__1FCDBCEB">
+        <Association Name="FK_CardsAbilitiesValues_Cards">
           <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
           <End Role="CardsAbilitiesValues" Type="Self.CardsAbilitiesValues" Multiplicity="*" />
           <ReferentialConstraint>
@@ -103,60 +103,82 @@
           <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CardsAbilitiesValues" EntityType="Self.CardsAbilitiesValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CardTypes" EntityType="Self.CardTypes" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cards__CardRarit__1CF15040" Association="Self.FK__Cards__CardRarit__1CF15040">
+          <AssociationSet Name="FK_Cards_CardRarities" Association="Self.FK_Cards_CardRarities">
             <End Role="CardRarities" EntitySet="CardRarities" />
             <End Role="Cards" EntitySet="Cards" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cards__CardTypeI__1BFD2C07" Association="Self.FK__Cards__CardTypeI__1BFD2C07">
+          <AssociationSet Name="FK_Cards_CardTypes" Association="Self.FK_Cards_CardTypes">
             <End Role="CardTypes" EntitySet="CardTypes" />
             <End Role="Cards" EntitySet="Cards" />
           </AssociationSet>
-          <AssociationSet Name="FK__CardsAbil__CardA__20C1E124" Association="Self.FK__CardsAbil__CardA__20C1E124">
+          <AssociationSet Name="FK_CardsAbilitiesValues_CardAbilityTypes" Association="Self.FK_CardsAbilitiesValues_CardAbilityTypes">
             <End Role="CardAbilityTypes" EntitySet="CardAbilityTypes" />
             <End Role="CardsAbilitiesValues" EntitySet="CardsAbilitiesValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__CardsAbil__CardI__1FCDBCEB" Association="Self.FK__CardsAbil__CardI__1FCDBCEB">
+          <AssociationSet Name="FK_CardsAbilitiesValues_Cards" Association="Self.FK_CardsAbilitiesValues_Cards">
             <End Role="Cards" EntitySet="Cards" />
             <End Role="CardsAbilitiesValues" EntitySet="CardsAbilitiesValues" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DeckGeneralsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DeckGeneralsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CardAbilityTypes" EntityType="DeckGeneralsModel.CardAbilityTypes" />
+          <EntitySet Name="CardRarities" EntityType="DeckGeneralsModel.CardRarities" />
+          <EntitySet Name="Cards" EntityType="DeckGeneralsModel.Cards" />
+          <EntitySet Name="CardsAbilitiesValues" EntityType="DeckGeneralsModel.CardsAbilitiesValues" />
+          <EntitySet Name="CardTypes" EntityType="DeckGeneralsModel.CardTypes" />
+          <AssociationSet Name="FK_CardsAbilitiesValues_CardAbilityTypes" Association="DeckGeneralsModel.FK_CardsAbilitiesValues_CardAbilityTypes">
+            <End Role="CardAbilityTypes" EntitySet="CardAbilityTypes" />
+            <End Role="CardsAbilitiesValues" EntitySet="CardsAbilitiesValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_CardRarities" Association="DeckGeneralsModel.FK_Cards_CardRarities">
+            <End Role="CardRarities" EntitySet="CardRarities" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_CardTypes" Association="DeckGeneralsModel.FK_Cards_CardTypes">
+            <End Role="CardTypes" EntitySet="CardTypes" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsAbilitiesValues_Cards" Association="DeckGeneralsModel.FK_CardsAbilitiesValues_Cards">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardsAbilitiesValues" EntitySet="CardsAbilitiesValues" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CardAbilityTypes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CardsAbilitiesValues" Relationship="Self.FK__CardsAbil__CardA__20C1E124" FromRole="CardAbilityTypes" ToRole="CardsAbilitiesValues" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CardsAbilitiesValues" Relationship="DeckGeneralsModel.FK_CardsAbilitiesValues_CardAbilityTypes" FromRole="CardAbilityTypes" ToRole="CardsAbilitiesValues" />
         </EntityType>
         <EntityType Name="CardRarities">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Rarity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cards" Relationship="Self.FK__Cards__CardRarit__1CF15040" FromRole="CardRarities" ToRole="Cards" />
+          <Property Name="Rarity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cards" Relationship="DeckGeneralsModel.FK_Cards_CardRarities" FromRole="CardRarities" ToRole="Cards" />
         </EntityType>
         <EntityType Name="Cards">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CardTypeId" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CardTypeId" Type="Int32" Nullable="false" />
           <Property Name="ResourceRequirement" Type="Int32" />
           <Property Name="CardText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="AttackValue" Type="Int32" />
           <Property Name="StrengthValue" Type="Int32" />
-          <Property Name="CardRarityId" Type="Int32" />
-          <NavigationProperty Name="CardRarities" Relationship="Self.FK__Cards__CardRarit__1CF15040" FromRole="Cards" ToRole="CardRarities" />
-          <NavigationProperty Name="CardTypes" Relationship="Self.FK__Cards__CardTypeI__1BFD2C07" FromRole="Cards" ToRole="CardTypes" />
-          <NavigationProperty Name="CardsAbilitiesValues" Relationship="Self.FK__CardsAbil__CardI__1FCDBCEB" FromRole="Cards" ToRole="CardsAbilitiesValues" />
+          <Property Name="CardRarityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CardRarities" Relationship="DeckGeneralsModel.FK_Cards_CardRarities" FromRole="Cards" ToRole="CardRarities" />
+          <NavigationProperty Name="CardTypes" Relationship="DeckGeneralsModel.FK_Cards_CardTypes" FromRole="Cards" ToRole="CardTypes" />
+          <NavigationProperty Name="CardsAbilitiesValues" Relationship="DeckGeneralsModel.FK_CardsAbilitiesValues_Cards" FromRole="Cards" ToRole="CardsAbilitiesValues" />
         </EntityType>
         <EntityType Name="CardsAbilitiesValues">
           <Key>
@@ -164,22 +186,22 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CardId" Type="Int32" Nullable="false" />
-          <Property Name="CardAbilityTypeId" Type="Int32" />
+          <Property Name="CardAbilityTypeId" Type="Int32" Nullable="false" />
           <Property Name="AbilityValue" Type="Int32" />
-          <NavigationProperty Name="CardAbilityTypes" Relationship="Self.FK__CardsAbil__CardA__20C1E124" FromRole="CardsAbilitiesValues" ToRole="CardAbilityTypes" />
-          <NavigationProperty Name="Cards" Relationship="Self.FK__CardsAbil__CardI__1FCDBCEB" FromRole="CardsAbilitiesValues" ToRole="Cards" />
+          <NavigationProperty Name="CardAbilityTypes" Relationship="DeckGeneralsModel.FK_CardsAbilitiesValues_CardAbilityTypes" FromRole="CardsAbilitiesValues" ToRole="CardAbilityTypes" />
+          <NavigationProperty Name="Cards" Relationship="DeckGeneralsModel.FK_CardsAbilitiesValues_Cards" FromRole="CardsAbilitiesValues" ToRole="Cards" />
         </EntityType>
         <EntityType Name="CardTypes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cards" Relationship="Self.FK__Cards__CardTypeI__1BFD2C07" FromRole="CardTypes" ToRole="Cards" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cards" Relationship="DeckGeneralsModel.FK_Cards_CardTypes" FromRole="CardTypes" ToRole="Cards" />
         </EntityType>
-        <Association Name="FK__CardsAbil__CardA__20C1E124">
-          <End Role="CardAbilityTypes" Type="Self.CardAbilityTypes" Multiplicity="0..1" />
-          <End Role="CardsAbilitiesValues" Type="Self.CardsAbilitiesValues" Multiplicity="*" />
+        <Association Name="FK_CardsAbilitiesValues_CardAbilityTypes">
+          <End Type="DeckGeneralsModel.CardAbilityTypes" Role="CardAbilityTypes" Multiplicity="1" />
+          <End Type="DeckGeneralsModel.CardsAbilitiesValues" Role="CardsAbilitiesValues" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CardAbilityTypes">
               <PropertyRef Name="Id" />
@@ -189,9 +211,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cards__CardRarit__1CF15040">
-          <End Role="CardRarities" Type="Self.CardRarities" Multiplicity="0..1" />
-          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+        <Association Name="FK_Cards_CardRarities">
+          <End Type="DeckGeneralsModel.CardRarities" Role="CardRarities" Multiplicity="1" />
+          <End Type="DeckGeneralsModel.Cards" Role="Cards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CardRarities">
               <PropertyRef Name="Id" />
@@ -201,9 +223,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cards__CardTypeI__1BFD2C07">
-          <End Role="CardTypes" Type="Self.CardTypes" Multiplicity="0..1" />
-          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+        <Association Name="FK_Cards_CardTypes">
+          <End Type="DeckGeneralsModel.CardTypes" Role="CardTypes" Multiplicity="1" />
+          <End Type="DeckGeneralsModel.Cards" Role="Cards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CardTypes">
               <PropertyRef Name="Id" />
@@ -213,9 +235,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CardsAbil__CardI__1FCDBCEB">
-          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
-          <End Role="CardsAbilitiesValues" Type="Self.CardsAbilitiesValues" Multiplicity="*" />
+        <Association Name="FK_CardsAbilitiesValues_Cards">
+          <End Type="DeckGeneralsModel.Cards" Role="Cards" Multiplicity="1" />
+          <End Type="DeckGeneralsModel.CardsAbilitiesValues" Role="CardsAbilitiesValues" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cards">
               <PropertyRef Name="Id" />
@@ -225,29 +247,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DeckGeneralsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CardAbilityTypes" EntityType="Self.CardAbilityTypes" />
-          <EntitySet Name="CardRarities" EntityType="Self.CardRarities" />
-          <EntitySet Name="Cards" EntityType="Self.Cards" />
-          <EntitySet Name="CardsAbilitiesValues" EntityType="Self.CardsAbilitiesValues" />
-          <EntitySet Name="CardTypes" EntityType="Self.CardTypes" />
-          <AssociationSet Name="FK__CardsAbil__CardA__20C1E124" Association="Self.FK__CardsAbil__CardA__20C1E124">
-            <End Role="CardAbilityTypes" EntitySet="CardAbilityTypes" />
-            <End Role="CardsAbilitiesValues" EntitySet="CardsAbilitiesValues" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cards__CardRarit__1CF15040" Association="Self.FK__Cards__CardRarit__1CF15040">
-            <End Role="CardRarities" EntitySet="CardRarities" />
-            <End Role="Cards" EntitySet="Cards" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cards__CardTypeI__1BFD2C07" Association="Self.FK__Cards__CardTypeI__1BFD2C07">
-            <End Role="CardTypes" EntitySet="CardTypes" />
-            <End Role="Cards" EntitySet="Cards" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CardsAbil__CardI__1FCDBCEB" Association="Self.FK__CardsAbil__CardI__1FCDBCEB">
-            <End Role="Cards" EntitySet="Cards" />
-            <End Role="CardsAbilitiesValues" EntitySet="CardsAbilitiesValues" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -257,49 +256,49 @@
           <EntitySetMapping Name="CardAbilityTypes">
             <EntityTypeMapping TypeName="DeckGeneralsModel.CardAbilityTypes">
               <MappingFragment StoreEntitySet="CardAbilityTypes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CardRarities">
             <EntityTypeMapping TypeName="DeckGeneralsModel.CardRarities">
               <MappingFragment StoreEntitySet="CardRarities">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Rarity" ColumnName="Rarity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cards">
             <EntityTypeMapping TypeName="DeckGeneralsModel.Cards">
               <MappingFragment StoreEntitySet="Cards">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CardTypeId" ColumnName="CardTypeId" />
-                <ScalarProperty Name="ResourceRequirement" ColumnName="ResourceRequirement" />
-                <ScalarProperty Name="CardText" ColumnName="CardText" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="AttackValue" ColumnName="AttackValue" />
-                <ScalarProperty Name="StrengthValue" ColumnName="StrengthValue" />
                 <ScalarProperty Name="CardRarityId" ColumnName="CardRarityId" />
+                <ScalarProperty Name="StrengthValue" ColumnName="StrengthValue" />
+                <ScalarProperty Name="AttackValue" ColumnName="AttackValue" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CardText" ColumnName="CardText" />
+                <ScalarProperty Name="ResourceRequirement" ColumnName="ResourceRequirement" />
+                <ScalarProperty Name="CardTypeId" ColumnName="CardTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CardsAbilitiesValues">
             <EntityTypeMapping TypeName="DeckGeneralsModel.CardsAbilitiesValues">
               <MappingFragment StoreEntitySet="CardsAbilitiesValues">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CardId" ColumnName="CardId" />
-                <ScalarProperty Name="CardAbilityTypeId" ColumnName="CardAbilityTypeId" />
                 <ScalarProperty Name="AbilityValue" ColumnName="AbilityValue" />
+                <ScalarProperty Name="CardAbilityTypeId" ColumnName="CardAbilityTypeId" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CardTypes">
             <EntityTypeMapping TypeName="DeckGeneralsModel.CardTypes">
               <MappingFragment StoreEntitySet="CardTypes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

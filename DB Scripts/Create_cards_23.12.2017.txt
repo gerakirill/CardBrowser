@@ -1,9 +1,14 @@
 Create Table CardTypes 
 (
-	Id int Identity(1,1) primary key,
+	Id int Identity(1,1),
 	Type nvarchar(50) NOT NULL
 )
 go
+
+Alter table CardTypes
+Add CONSTRAINT PK_CardTypes PRIMARY KEY (Id)
+GO
+
 
 insert into CardTypes (Type)
 values
@@ -16,10 +21,14 @@ go
 
 Create Table CardAbilityTypes 
 (
-	Id int Identity(1,1) primary key,
+	Id int Identity(1,1),
 	Type nvarchar(50) NOT NULL
 )
 go
+
+Alter table CardAbilityTypes
+Add CONSTRAINT PK_CardAbilityTypes PRIMARY KEY (Id)
+GO
 
 insert into CardAbilityTypes (Type)
 values
@@ -31,10 +40,14 @@ go
 
 Create Table CardRarities
 (
-	Id int Identity(1,1) primary key,
+	Id int Identity(1,1),
 	Rarity nvarchar(50) NOT NULL
 )
 go
+
+Alter table CardRarities
+Add CONSTRAINT PK_CardRarities PRIMARY KEY (Id)
+GO
 
 insert into CardRarities (Rarity)
 values
@@ -47,32 +60,43 @@ go
 
 Create Table Cards
 (
-	Id int Identity(1,1) primary key,
+	Id int Identity(1,1),
 	Name nvarchar(50) NOT NULL,
-	CardTypeId int foreign key references CardTypes(Id),
+	CardTypeId int NOT NULL,
 	ResourceRequirement int NULL,
 	CardText nvarchar(200) NULL,
 	Image image NULL,
 	AttackValue int NULL,
 	StrengthValue int NULL,
-	CardRarityId int foreign key references CardRarities(Id)
+	CardRarityId int NOT NULL
 )
 go
 
+Alter table Cards
+Add CONSTRAINT PK_Cards PRIMARY KEY (Id),
+	CONSTRAINT FK_Cards_CardTypes FOREIGN KEY (CardTypeId) REFERENCES CardTypes(Id),
+	CONSTRAINT FK_Cards_CardRarities FOREIGN KEY (CardRarityId) REFERENCES CardRarities(Id)
+GO
+
 Create Table CardsAbilitiesValues
 (
-	Id int Identity(1,1) primary key,
-	CardId int foreign key references Cards(Id) NOT NULL,
-	CardAbilityTypeId int foreign key references CardAbilityTypes(Id) NULL,
+	Id int Identity(1,1),
+	CardId int NOT NULL,
+	CardAbilityTypeId int NOT NULL,
 	AbilityValue int NULL
 )
 go
+
+Alter table CardsAbilitiesValues
+Add CONSTRAINT PK_CardsAbilitiesValues PRIMARY KEY (Id),
+	CONSTRAINT FK_CardsAbilitiesValues_Cards FOREIGN KEY (CardId) REFERENCES Cards(Id),
+	CONSTRAINT FK_CardsAbilitiesValues_CardAbilityTypes FOREIGN KEY (CardAbilityTypeId) REFERENCES CardAbilityTypes(Id)
+GO
 
 insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
 values
 (1, 1, NULL, 4, 'BA-10', 1, 1)
 go
-
 
 
 

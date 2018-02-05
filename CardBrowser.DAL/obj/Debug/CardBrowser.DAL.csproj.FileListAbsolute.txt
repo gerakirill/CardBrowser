@@ -22,3 +22,15 @@ C:\projects\CardBrowser\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.Sq
 C:\projects\CardBrowser\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.csprojResolveAssemblyReference.cache
 C:\projects\CardBrowser\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.dll
 C:\projects\CardBrowser\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.pdb
+C:\homeproj\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.csprojResolveAssemblyReference.cache
+C:\homeproj\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.dll
+C:\homeproj\CardBrowser\CardBrowser.DAL\obj\Debug\CardBrowser.DAL.pdb
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.DAL.dll.config
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.DAL.dll
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.DAL.pdb
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.Database.dll
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.dll
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\CardBrowser.Database.pdb
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.xml
+C:\homeproj\CardBrowser\CardBrowser.DAL\bin\Debug\EntityFramework.SqlServer.xml

@@ -22,13 +22,13 @@ namespace CardBrowser.Database
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> CardTypeId { get; set; }
+        public int CardTypeId { get; set; }
         public Nullable<int> ResourceRequirement { get; set; }
         public string CardText { get; set; }
         public byte[] Image { get; set; }
         public Nullable<int> AttackValue { get; set; }
         public Nullable<int> StrengthValue { get; set; }
-        public Nullable<int> CardRarityId { get; set; }
+        public int CardRarityId { get; set; }
     
         public virtual CardRarities CardRarities { get; set; }
         public virtual CardTypes CardTypes { get; set; }

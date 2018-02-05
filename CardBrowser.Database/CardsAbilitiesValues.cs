@@ -16,7 +16,7 @@ namespace CardBrowser.Database
     {
         public int Id { get; set; }
         public int CardId { get; set; }
-        public Nullable<int> CardAbilityTypeId { get; set; }
+        public int CardAbilityTypeId { get; set; }
         public Nullable<int> AbilityValue { get; set; }
     
         public virtual CardAbilityTypes CardAbilityTypes { get; set; }
