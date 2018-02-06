@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Config } from '../config';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -14,11 +15,11 @@ export class CardService {
     
     private entityUrl = 'card';
     private baseUrl ='http://localhost:51700/api/';
-
-    constructor(private http: HttpClient) { }
+    
+    constructor(private http: HttpClient, private config : Config) { }
 
     getCard(id) {
-        return this.http.get( this.baseUrl + this.entityUrl + "/" + id, { headers: new HttpHeaders('') })
+        return this.http.get( this.config.get["baseUrl"] + this.entityUrl + "/" + id, { headers: new HttpHeaders('') })
         .catch(this.handleError)        
     }
 

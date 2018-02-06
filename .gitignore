@@ -1,1 +1,17 @@
 /.vs
+/CardBrowser/bin
+/CardBrowser/obj
+/CardBrowser.BLL/bin
+/CardBrowser.BLL/obj
+/CardBrowser.DAL/bin
+/CardBrowser.DAL/obj
+/CardBrowser.Database/obj
+/CardBrowser.Database/bin
+/CardBrowser.Infrastructure/bin
+/CardBrowser.Infrastructure/obj
+/CardBrowser.UI/bin
+/CardBrowser.UI/obj
+/CardBrowser.ViewModels/obj
+/CardBrowser.ViewModels/bin
+/Services/obj
+/Services/bin
