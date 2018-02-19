@@ -16,10 +16,7 @@
     public class UnitOfWork : IUnitOfWork
     {
 
-        #region Fields
-        private readonly DeckGeneralsEntities _db;
-        //private ICardService _cardService;
-        //private readonly IUnityContainer container = new Uni();
+        #region Fields       
         #endregion
 
         #region Properties
@@ -28,40 +25,19 @@
 
         public UnitOfWork(ICardService cardService)
         {
-            CardService = cardService;
-            _db = new DeckGeneralsEntities();
+            CardService = cardService;            
         }
-                
-
-        public void SaveChanges()
-        {
-            _db.SaveChanges();
-        }
-               
 
         #region Utils
         ~UnitOfWork()
         {
-            Dispose(false);
+            Dispose();
         }
 
         private bool disposed = false;
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _db.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
         public void Dispose()
-        {
-            Dispose(true);
+        {           
             GC.SuppressFinalize(this);
         }
         #endregion

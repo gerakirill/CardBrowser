@@ -25,6 +25,8 @@
             // Register repositories
             container.RegisterType<ICardsRepository, CardsRepo>();
 
+            //Register database context
+
         }
     }
 }

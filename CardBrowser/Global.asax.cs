@@ -23,8 +23,6 @@
             
             // Configures container for WebAPI
             GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(UnityDependencyResolver.container);
-
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfiguration.Configure();
         }
     }
