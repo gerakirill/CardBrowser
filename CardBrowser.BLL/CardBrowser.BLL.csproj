@@ -30,20 +30,41 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions">
+      <HintPath>..\CardBrowser\bin\Unity.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
+    <Compile Include="CardService.cs" />
     <Compile Include="Enums\AbilityTypes.cs" />
     <Compile Include="Enums\CardTypes.cs" />
     <Compile Include="Enums\CardRarities.cs" />
+    <Compile Include="Exceptions\BaseCustomException.cs" />
+    <Compile Include="Exceptions\InvalidPictureFormatException.cs" />
     <Compile Include="Models\Ability.cs" />
     <Compile Include="Models\ArmorCard.cs" />
     <Compile Include="Models\CityCard.cs" />
@@ -51,6 +72,29 @@
     <Compile Include="Models\UnitCard.cs" />
     <Compile Include="Models\CardBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CardBrowser.DAL\CardBrowser.DAL.csproj">
+      <Project>{6B461B60-2378-4369-B279-6B071282F06D}</Project>
+      <Name>CardBrowser.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CardBrowser.Database\CardBrowser.Database.csproj">
+      <Project>{5C093A67-5095-4A33-8A6F-314AAE7A5974}</Project>
+      <Name>CardBrowser.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CardBrowser.ViewModels\CardBrowser.ViewModels.csproj">
+      <Project>{BFBBC73F-70F2-4057-95D6-2F280416007C}</Project>
+      <Name>CardBrowser.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\CardBrowser.Infrastructure.csproj">
+      <Project>{37f39612-9500-4e5a-b893-d7fcd094b7ad}</Project>
+      <Name>CardBrowser.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

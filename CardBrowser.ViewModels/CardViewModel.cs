@@ -1,10 +1,5 @@
 ﻿namespace CardBrowser.ViewModels
-{
-
-    #region usings
-    using CardBrowser.BLL.Enums;
-    #endregion
-
+{    
     public class CardViewModel
     {
         public int Id { get; set; }

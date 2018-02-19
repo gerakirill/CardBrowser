@@ -3,14 +3,20 @@
 
     #region usings
     using System.Web.Http;
+    using BLL;
+    using global::Infrastructure.Interfaces;
     using Infrastructure;
+    using Infrastructure.Interfaces;
     using Services;
     #endregion
 
     public class BaseApiController : ApiController
     {
-        private UnitOfWork _unitOfWork;
+        protected IUnitOfWork UnitOfWork;
 
-        public UnitOfWork UnitOfWork => _unitOfWork ?? (_unitOfWork = new UnitOfWork());
+        public BaseApiController(IUnitOfWork UnitOfWork)
+        {
+            this.UnitOfWork = UnitOfWork;
+        }
     }
 }

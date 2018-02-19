@@ -1,16 +1,22 @@
 ﻿namespace CardBrowser.Controllers
 {
-
+    using System.Collections.Generic;
     #region usings
     using System.Web.Http;
+    using System.Web.Http.Description;
+    using global::Infrastructure.Interfaces;
     using Models;
     using ViewModels;
-    using CardBrowser.Services;
     #endregion
 
-    [RoutePrefix("api/card")]
     public class CardController : BaseApiController
     {
+        
+        public CardController(IUnitOfWork UnitOfWork) : base(UnitOfWork)
+        {
+            
+        }
+
         /// <summary>
         /// Gets all cards
         /// </summary>
@@ -18,9 +24,14 @@
         [HttpGet]
         [AllowCrossSiteJson]
         [AllowAnonymous]
+        [Route("api/cards")]
+        [ResponseType(typeof(IEnumerable<CardViewModel>))]
         public IHttpActionResult GetAllCards()
         {
-            return Ok(UnitOfWork.CardService.GetAllCardsViewModels());
+            using (UnitOfWork)
+            {
+                return Ok(UnitOfWork.CardService.GetAllCardsViewModels());
+            }            
         }
 
         /// <summary>
@@ -31,11 +42,16 @@
         [HttpGet]
         [AllowCrossSiteJson]
         [AllowAnonymous]
+        [Route("api/card/{id}")]
+        [ResponseType(typeof(CardViewModel))]
         public IHttpActionResult GetCard([FromUri] int id)
         {
-            return Ok(UnitOfWork.CardService.GetCardViewModel(id));
+            using (UnitOfWork)
+            {
+                return Ok(UnitOfWork.CardService.GetAllCardsViewModels());
+            }                
         }
-        
+
         /// <summary>
         /// Deletes cards
         /// </summary>
@@ -44,10 +60,14 @@
         [HttpDelete]
         [AllowCrossSiteJson]
         [AllowAnonymous]
+        [Route("api/card/delete/{id}")]
         public IHttpActionResult DeleteCard([FromUri] int id)
         {
-            UnitOfWork.CardService.DeleteCard(id);
-            return Ok();
+            using (UnitOfWork)
+            {
+                UnitOfWork.CardService.DeleteCard(id);
+                return Ok();
+            }
         }
 
         /// <summary>
@@ -58,10 +78,14 @@
         [HttpPut]
         [AllowCrossSiteJson]
         [AllowAnonymous]
+        [Route("api/card/update")]
         public IHttpActionResult UpdateCard([FromBody] CardViewModel card)
         {
-            UnitOfWork.CardService.UpdateCard(card);
-            return Ok();
+            using (UnitOfWork)
+            {
+                UnitOfWork.CardService.UpdateCard(card);
+                return Ok();
+            }
         }
     }
 }
