@@ -8,11 +8,11 @@
     using Models;
     using ViewModels;
     #endregion
-
-    public class CardController : BaseApiController
+    
+    public class CardsController : BaseApiController
     {
         
-        public CardController(IUnitOfWork UnitOfWork) : base(UnitOfWork)
+        public CardsController(IUnitOfWork UnitOfWork) : base(UnitOfWork)
         {
             
         }
@@ -42,13 +42,13 @@
         [HttpGet]
         [AllowCrossSiteJson]
         [AllowAnonymous]
-        [Route("api/card/{id}")]
+        [Route("api/cards/{id}")]
         [ResponseType(typeof(CardViewModel))]
         public IHttpActionResult GetCard([FromUri] int id)
         {
             using (UnitOfWork)
             {
-                return Ok(UnitOfWork.CardService.GetAllCardsViewModels());
+                return Ok(UnitOfWork.CardService.GetCardViewModel(id));
             }                
         }
 
@@ -59,8 +59,7 @@
         /// <returns></returns>
         [HttpDelete]
         [AllowCrossSiteJson]
-        [AllowAnonymous]
-        [Route("api/card/delete/{id}")]
+        [AllowAnonymous]        
         public IHttpActionResult DeleteCard([FromUri] int id)
         {
             using (UnitOfWork)
@@ -75,10 +74,10 @@
         /// </summary>
         /// <param name="card">Card to update</param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPost]
         [AllowCrossSiteJson]
         [AllowAnonymous]
-        [Route("api/card/update")]
+        [Route("api/cards/update")]
         public IHttpActionResult UpdateCard([FromBody] CardViewModel card)
         {
             using (UnitOfWork)

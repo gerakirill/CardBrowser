@@ -92,15 +92,3 @@ Add CONSTRAINT PK_CardsAbilitiesValues PRIMARY KEY (Id),
 	CONSTRAINT FK_CardsAbilitiesValues_Cards FOREIGN KEY (CardId) REFERENCES Cards(Id),
 	CONSTRAINT FK_CardsAbilitiesValues_CardAbilityTypes FOREIGN KEY (CardAbilityTypeId) REFERENCES CardAbilityTypes(Id)
 GO
-
-insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
-values
-(1, 1, NULL, 4, 'BA-10', 1, 1)
-go
-
-
-
-update Cards
-set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\C#\CardBrowser\DG images\BA10.jpg', Single_Blob) as img) 
-where Id = 1
-go

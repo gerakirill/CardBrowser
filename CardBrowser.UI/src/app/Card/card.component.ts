@@ -27,13 +27,20 @@ export class CardComponent implements OnInit {
       }
 
       getCard(): void {
-        const id = +this.route.snapshot.paramMap.get('id');        
+        const id = this.route.snapshot.paramMap.get('id');        
         this.cardService.getCard(id)
           .subscribe(card => this.card = card);          
       }
      
       goBack(): void {
         this.location.back();
+      }
+
+      save() {
+        this.cardService.updateCard(this.card)
+        .subscribe(res => {
+          this.goBack()
+        })
       }
 
 }

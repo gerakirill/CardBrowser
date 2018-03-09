@@ -36,13 +36,7 @@ import { routes } from '../app/app-routing.module';
   ],
   providers: [
     CardService,
-    HttpClientModule,
-    {
-      provide: APP_INITIALIZER,
-      useFactory(config: Config) {
-        return () => config.load()
-      }
-    }
+    HttpClientModule    
   ],
   bootstrap: [AppComponent]
 })

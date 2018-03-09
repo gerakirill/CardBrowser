@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6ebba72e23fc45468ffe4323f47982b2" Name="Diagram1">
+      <Diagram DiagramId="6ebba72e23fc45468ffe4323f47982b2" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="DeckGeneralsModel.CardAbilityTypes" Width="1.5" PointX="3" PointY="5.875" />
-        <EntityTypeShape EntityType="DeckGeneralsModel.CardRarities" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="DeckGeneralsModel.CardRarities" Width="1.5" PointX="0.75" PointY="1.875" />
         <EntityTypeShape EntityType="DeckGeneralsModel.Cards" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="DeckGeneralsModel.CardsAbilitiesValues" Width="1.5" PointX="5.25" PointY="1.625" />
-        <EntityTypeShape EntityType="DeckGeneralsModel.CardTypes" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="DeckGeneralsModel.CardTypes" Width="1.5" PointX="0.75" PointY="5.875" />
         <AssociationConnector Association="DeckGeneralsModel.FK_CardsAbilitiesValues_CardAbilityTypes" />
         <AssociationConnector Association="DeckGeneralsModel.FK_Cards_CardRarities" />
         <AssociationConnector Association="DeckGeneralsModel.FK_Cards_CardTypes" />

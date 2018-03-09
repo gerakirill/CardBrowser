@@ -13,18 +13,23 @@ import { CardComponent } from '../Card/card.component';
 @Injectable()
 export class CardService {
     
-    private entityUrl = 'card';
+    private entityUrl = 'cards';
     private baseUrl ='http://localhost:51700/api/';
     
-    constructor(private http: HttpClient, private config : Config) { }
+    constructor(private http: HttpClient) { }
 
     getCard(id) {
-        return this.http.get( this.config.get["baseUrl"] + this.entityUrl + "/" + id, { headers: new HttpHeaders('') })
+        return this.http.get( this.baseUrl + this.entityUrl + "/" + id, { headers: new HttpHeaders('') })
         .catch(this.handleError)        
     }
 
     getCards() {
         return this.http.get( this.baseUrl + this.entityUrl, { headers: new HttpHeaders('') })        
+        .catch(this.handleError)
+    }
+
+    updateCard(cardModel) {        
+        return this.http.post( this.baseUrl + this.entityUrl +'/update', cardModel, { headers: new HttpHeaders('') })        
         .catch(this.handleError)
     }
 
