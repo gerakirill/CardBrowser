@@ -1,8 +1,24 @@
+<!-- <label class="control-label">Wealth Score:</label>
+<select class="form-control" name="HomeValue" [(ngModel)]="entity.WealthScoreId" #WealthScore="ngModel">
+  <option *ngFor="let wealthScore of objectKeys(wealthScores)" [value]="wealthScore">{{ wealthScores[wealthScore] }}</option>
+</select> -->
+<div class="col-md-12">
+  <div class="col-md-4">
+      <label class="control-label">Filters:</label>
+      <select class="form-control" name="TypeFilter" (change)="filterbyTypes($event)" placeholder="Type">
+        <option *ngFor="let type of types" [value]="type.value">{{ type.name }}</option>
+      </select>
+  </div>  
+</div>
+<div class="col-md-12">
   <ul *ngIf="cards">
     <li *ngFor="let card of cards">
-      <h2>{{card.Name}}</h2>
-      <a routerLink="edit/{{card.Id}}">
+      <div class="col-md-4 col-md-offset-4">
+        <h2>{{card.Name}}</h2>
+        <a routerLink="edit/{{card.Id}}">
           <img [image]="card.Image" width="200" height="300" />
-      </a>    
+        </a>
+      </div>
     </li>
   </ul>
+</div>

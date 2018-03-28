@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Config } from '../config';
 
@@ -15,6 +15,7 @@ export class CardService {
     
     private entityUrl = 'cards';
     private baseUrl ='http://localhost:51700/api/';
+   
     
     constructor(private http: HttpClient) { }
 
@@ -28,7 +29,7 @@ export class CardService {
         .catch(this.handleError)
     }
 
-    updateCard(cardModel) {        
+    updateCard(cardModel) {                        
         return this.http.post( this.baseUrl + this.entityUrl +'/update', cardModel, { headers: new HttpHeaders('') })        
         .catch(this.handleError)
     }

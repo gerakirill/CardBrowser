@@ -13,6 +13,7 @@
     using global::Infrastructure.Interfaces;
     using Exceptions;
     using global::Infrastructure.Repositories;
+    using ViewModels.BindingModel;
     #endregion
 
     /// <summary>
@@ -56,37 +57,39 @@
         /// Creates new card
         /// </summary>
         /// <param name="card">Card view model</param>
-        public void CreateCard(CardViewModel card)
+        public void CreateCard(CardBindingModel cardModel)
         {
-            if (!string.IsNullOrEmpty(card.Name) && !string.IsNullOrEmpty(card.Image))
-            {
-                try
-                {
-                    var newCard = this.entityService.ConvertTo<CardViewModel, Cards>(card);
-                    if (newCard != null)
-                    {
-                        newCard.Image = Convert.FromBase64String(card.Image);
-                        _cardsRepo.Create(newCard);
-                    }
-                }
-                catch (FormatException)
-                {
-                    throw new InvalidPictureFormatException("Picture has a bad format");
-                }
-            }
+            //if (!string.IsNullOrEmpty(cardModel.Name) && !string.IsNullOrEmpty(card.Image))
+            //{
+            //    try
+            //    {
+            //        Cards newCard = new Cards();
+            //        newCard = this.entityService.ConvertTo<CardBindingModel, Cards>(cardModel);
+            //        if (newCard != null)
+            //        {
+            //            newCard.Image = Convert.FromBase64String(card.Image);
+            //            _cardsRepo.Create(newCard);
+            //        }
+            //    }
+            //    catch (FormatException)
+            //    {
+            //        throw new InvalidPictureFormatException("Picture has a bad format");
+            //    }
+            //}
         }
 
         /// <summary>
         /// Updates card
         /// </summary>
         /// <param name="card">Card view model</param>
-        public void UpdateCard(CardViewModel card)
+        public void UpdateCard(CardBindingModel card)
         {
             var cardEntity = _cardsRepo
                 .FindBy(c => c.Id == card.Id);
             if (cardEntity != null)
             {
-                cardEntity = this.entityService.ConvertTo<CardViewModel, Cards>(card);
+                var updatedCard = this.entityService.ConvertTo<CardBindingModel, Cards>(card);
+                this.entityService.AssignTo<Cards, Cards>(updatedCard, cardEntity);
                 _cardsRepo.Update(cardEntity);
             }
         }

@@ -1,14 +1,15 @@
 ﻿namespace CardBrowser.Controllers
-{
-    using System.Collections.Generic;
+{    
     #region usings
     using System.Web.Http;
     using System.Web.Http.Description;
     using global::Infrastructure.Interfaces;
     using Models;
     using ViewModels;
+    using ViewModels.BindingModel;
+    using System.Collections.Generic;
     #endregion
-    
+
     public class CardsController : BaseApiController
     {
         
@@ -22,7 +23,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [AllowCrossSiteJson]
+        
         [AllowAnonymous]
         [Route("api/cards")]
         [ResponseType(typeof(IEnumerable<CardViewModel>))]
@@ -40,7 +41,7 @@
         /// <param name="id">Id of card to get</param>
         /// <returns></returns>
         [HttpGet]
-        [AllowCrossSiteJson]
+        
         [AllowAnonymous]
         [Route("api/cards/{id}")]
         [ResponseType(typeof(CardViewModel))]
@@ -58,7 +59,7 @@
         /// <param name="id">Id of card to delete</param>
         /// <returns></returns>
         [HttpDelete]
-        [AllowCrossSiteJson]
+        
         [AllowAnonymous]        
         public IHttpActionResult DeleteCard([FromUri] int id)
         {
@@ -75,10 +76,10 @@
         /// <param name="card">Card to update</param>
         /// <returns></returns>
         [HttpPost]
-        [AllowCrossSiteJson]
+        
         [AllowAnonymous]
         [Route("api/cards/update")]
-        public IHttpActionResult UpdateCard([FromBody] CardViewModel card)
+        public IHttpActionResult UpdateCard([FromBody] CardBindingModel card)
         {
             using (UnitOfWork)
             {
