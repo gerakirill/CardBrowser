@@ -1,0 +1,71 @@
+IF NOT EXISTS (Select * from cards where Name = 'BA-10')
+insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
+values
+(1, 1, NULL, 4, 'BA-10', 1, 1)
+go
+
+IF EXISTS (Select * from cards where Name = 'BA-10')
+update Cards
+set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\homeproj\DG images\BA10.jpg', Single_Blob) as img) 
+where Name = 'BA-10'
+go
+
+IF NOT EXISTS (Select * from cards where Name = 'BT-2')
+insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
+values
+(2, 1, NULL, 4, 'BT-2', 2, 1)
+go
+
+IF EXISTS (Select * from cards where Name = 'BT-2')
+update Cards
+set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\homeproj\DG images\BT2.jpg', Single_Blob) as img) 
+where Name = 'BT-2'
+go
+
+IF NOT EXISTS (Select * from cards where Name = 'IS-2')
+insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
+values
+(4, 5, NULL, 4, 'IS-2', 4, 4)
+go
+
+IF EXISTS (Select * from cards where Name = 'IS-2')
+update Cards
+set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\homeproj\DG images\IS2.jpg', Single_Blob) as img) 
+where Name = 'IS-2'
+go
+
+IF NOT EXISTS (Select * from cards where Name = 'Oiltrain')
+insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
+values
+(NULL, 1, 'Add 4 resources', 2, 'Oiltrain', 0, Null)
+go
+
+IF EXISTS (Select * from cards where Name = 'Oiltrain')
+update Cards
+set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\homeproj\DG images\Oiltrain.jpg', Single_Blob) as img) 
+where Name = 'Oiltrain'
+go
+
+IF NOT EXISTS (Select * from cards where Name = 'T-28')
+insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
+values
+(2, 1, NULL, 4, 'T-28', 3, 2)
+go
+
+IF EXISTS (Select * from cards where Name = 'T-28')
+update Cards
+set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\homeproj\DG images\T28.jpg', Single_Blob) as img) 
+where Name = 'T-28'
+go
+
+IF NOT EXISTS (Select * from cards where Name = 'Stalingrad')
+insert into Cards(AttackValue, CardRarityId, CardText, CardTypeId, Name, ResourceRequirement, StrengthValue)
+values
+(NULL, 1, NULL, 1, 'Stalingrad', NULL, 12)
+go
+
+IF EXISTS (Select * from cards where Name = 'Stalingrad')
+update Cards
+set Image = (SELECT BulkColumn FROM Openrowset( Bulk 'C:\homeproj\DG images\Stalingrad.jpg', Single_Blob) as img) 
+where Name = 'Stalingrad'
+go

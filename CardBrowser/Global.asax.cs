@@ -6,19 +6,23 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using CardBrowser.Services;
+    using global::Services;
+    using Services;
     #endregion
 
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-            UnityDependency.Start();
+            
+            AreaRegistration.RegisterAllAreas();            
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            UnityDependencyResolver.RegisterTypes();
+            
+            // Configures container for WebAPI
+            GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(UnityDependencyResolver.container);
             AutoMapperConfiguration.Configure();
         }
     }

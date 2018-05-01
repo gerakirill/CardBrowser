@@ -3,8 +3,6 @@
 
     #region usings
     using System.Collections.Generic;
-    using BLL.Models;
-    using Database;
     using ViewModels;
     #endregion
 

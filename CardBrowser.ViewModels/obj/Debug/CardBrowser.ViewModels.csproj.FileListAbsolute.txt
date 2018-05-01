@@ -1,7 +1,0 @@
-C:\projects\CardBrowser\CardBrowser\CardBrowser.ViewModels\bin\Debug\CardBrowser.ViewModels.dll
-C:\projects\CardBrowser\CardBrowser\CardBrowser.ViewModels\bin\Debug\CardBrowser.ViewModels.pdb
-C:\projects\CardBrowser\CardBrowser\CardBrowser.ViewModels\bin\Debug\CardBrowser.BLL.dll
-C:\projects\CardBrowser\CardBrowser\CardBrowser.ViewModels\bin\Debug\CardBrowser.BLL.pdb
-C:\projects\CardBrowser\CardBrowser\CardBrowser.ViewModels\obj\Debug\CardBrowser.ViewModels.csprojResolveAssemblyReference.cache
-C:\projects\CardBrowser\CardBrowser\CardBrowser.ViewModels\obj\Debug\CardBrowser.ViewModels.dll
-C:\projects\CardBrowser\CardBrowser\CardBrowser.ViewModels\obj\Debug\CardBrowser.ViewModels.pdb

@@ -1,8 +1,0 @@
-  <ul *ngIf="cards">
-    <li *ngFor="let card of cards">
-      <h2>{{card.Name}}</h2>
-      <a routerLink="edit/{{card.Id}}">
-          <img [image]="card.Image" width="200" height="300" />
-      </a>    
-    </li>
-  </ul>

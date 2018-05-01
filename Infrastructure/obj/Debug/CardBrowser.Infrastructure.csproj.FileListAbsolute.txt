@@ -1,0 +1,11 @@
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\Infrastructure.dll
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\Infrastructure.pdb
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\CardBrowser.Database.dll
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\CardBrowser.ViewModels.dll
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\EntityFramework.dll
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\CardBrowser.Database.pdb
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\CardBrowser.ViewModels.pdb
+C:\homeproj\CardBrowser\Infrastructure\bin\Debug\EntityFramework.xml
+C:\homeproj\CardBrowser\Infrastructure\obj\Debug\CardBrowser.Infrastructure.csprojResolveAssemblyReference.cache
+C:\homeproj\CardBrowser\Infrastructure\obj\Debug\Infrastructure.dll
+C:\homeproj\CardBrowser\Infrastructure\obj\Debug\Infrastructure.pdb

@@ -62,6 +62,10 @@
       <Project>{5c093a67-5095-4a33-8a6f-314aae7a5974}</Project>
       <Name>CardBrowser.Database</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\CardBrowser.Infrastructure.csproj">
+      <Project>{37F39612-9500-4E5A-B893-D7FCD094B7AD}</Project>
+      <Name>CardBrowser.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
